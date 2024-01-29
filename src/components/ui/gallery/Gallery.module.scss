@@ -1,0 +1,14 @@
+@import "../../../assets/styles/variables";
+
+.gallery {
+  @apply flex flex-nowrap items-center overflow-x-auto py-3 no-scrollbar;
+  -webkit-overflow-scrolling: touch;
+}
+
+.withText {
+  @include fade-bg-gradient(0deg);
+
+  &::before {
+    border-radius: theme('borderRadius.lg');
+  }
+}

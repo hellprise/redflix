@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './react-select.scss';
+@import 'react-redux-toastr/src/styles/index';
+
+@layer base {
+  body {
+    background-color: theme("colors.gray.900");
+    color: theme("colors.white");
+  }
+}
+
+input[type="file"],
+input[type="file"]::-webkit-file-upload-button {
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+input:focus {
+  box-shadow: none !important;
+  outline: none;
+}
+
+.text-editor-toolbar {
+  div > div {
+    @apply outline-border-none shadow-none transition-colors border-gray-500 bg-gray-500 p-1.5 cursor-pointer rounded-md hover:bg-gray-300;
+  }
+
+  img {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.admin-form {
+  //@apply w-1/2 mt-12;
+  width: theme('width.1/2');
+  margin-top: theme('margin.12');
+}
+
+/* Slide animation */
+.slide-animation-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.slide-animation-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.slide-animation-exit {
+  opacity: 1;
+}
+
+.slide-animation-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
