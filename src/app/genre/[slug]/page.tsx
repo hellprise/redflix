@@ -5,7 +5,6 @@ import { API_URL, getGenresUrl, getMoviesUrl } from "@/config/api.config"
 import { IGenre } from "@/shared/types/genre.interface"
 
 async function getGenre({ slug }: { slug: string }) {
-	// TODO: можливо, замість useQuery варто використати fetch саме на інших сторінках (файлах page.tsx), щоб був якийсь сср
 	const genreRes = await fetch(`${API_URL}${getGenresUrl(`by-slug/${slug}`)}`)
 
 	if (!genreRes.ok) {
@@ -64,14 +63,11 @@ export default async function GenrePage({
 	return (
 		<>
 			{genre ? (
-				<>
-					<MoviesCatalog
-						title={genre.name}
-						description={genre.description}
-						isLoading={false}
-						movies={moviesByGenre}
-					/>
-				</>
+				<MoviesCatalog
+					title={genre.name}
+					description={genre.description}
+					movies={moviesByGenre}
+				/>
 			) : null}
 		</>
 	)

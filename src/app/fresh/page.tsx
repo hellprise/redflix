@@ -1,35 +1,33 @@
-"use client"
-
-import { useQuery } from "@tanstack/react-query"
-import { useEffect } from "react"
-
 import { MoviesCatalog } from "@/components/ui/movies-catalog/MoviesCatalog"
 
-import { MovieService } from "@/services/movie/movie.service"
+import { getContentType } from "@/services/api/api.helper"
 
-import { toastError } from "@/utils/toast-error"
+import { API_URL, getMoviesUrl } from "@/config/api.config"
 
-export default function FreshMoviesPage() {
-	const {
-		data: movies,
-		isLoading,
-		isError,
-		error
-	} = useQuery({
-		queryKey: ["fresh movies"],
-		queryFn: () => MovieService.getAll(),
-		select: ({ data }) => data
+import { IMovie } from "@/shared/types/movie.interface"
+
+async function getMovies() {
+	const moviesRes = await fetch(`${API_URL}${getMoviesUrl("")}`, {
+		method: "GET",
+		headers: getContentType()
 	})
 
-	useEffect(() => {
-		if (isError) toastError(error, "Failed to load movies")
-	}, [isError, error])
+	if (!moviesRes.ok) {
+		throw new Error("Failed to fetch movies")
+	}
+
+	const trendingMovies: IMovie[] = await moviesRes.json()
+
+	return trendingMovies
+}
+
+export default async function FreshMoviesPage() {
+	const movies = await getMovies()
 
 	return (
 		<MoviesCatalog
 			title="Fresh movies"
 			movies={movies || []}
-			isLoading={isLoading}
 			description="New movies and series in excellent quality: legal, safe, without ads"
 		/>
 	)

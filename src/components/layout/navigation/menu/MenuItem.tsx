@@ -19,7 +19,11 @@ export function MenuItem({ item: { title, slug, icon } }: { item: IMenuItem }) {
 				"border-r-transparent": !isActive
 			})}
 		>
-			<Link className="group flex items-center gap-3 text-gray-600" href={slug}>
+			<Link
+				className="group flex items-center gap-3 text-gray-600"
+				href={slug}
+				// prefetch={false}
+			>
 				<MaterialIcon
 					className={clsx(
 						"text-2lg transition-colors group-hover:text-primary",

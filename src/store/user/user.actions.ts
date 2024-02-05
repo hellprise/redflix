@@ -26,7 +26,6 @@ export const auth = createAsyncThunk<
 	IAuthResponse,
 	IEmailPassword & { type: EAuthVariation }
 >("auth/main", async ({ email, password, type }, thunkAPI) => {
-	console.log("auth/main", type, email, password)
 	try {
 		const response = await AuthService.main(type, email, password)
 		// const response = await AuthService.login(email, password)

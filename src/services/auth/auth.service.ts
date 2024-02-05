@@ -19,7 +19,6 @@ export const AuthService = {
 		email: string,
 		password: string
 	) {
-		console.log("AuthService.main", variant, email, password)
 		const response = await axiosClassic.post<IAuthResponse>(
 			getAuthUrl(
 				`${variant === EAuthVariation.REGISTER ? "register" : "login"}`
@@ -36,7 +35,6 @@ export const AuthService = {
 	},
 
 	async login(email: string, password: string) {
-		console.log("AuthService.LOGIN", email, password)
 		const response = await axiosClassic.post<IAuthResponse>(
 			getAuthUrl(`login`),
 			{
