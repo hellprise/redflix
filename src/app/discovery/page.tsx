@@ -3,22 +3,27 @@ import { ICollection } from "@/components/screens/collections/collections.interf
 
 import { API_URL, getGenresUrl } from "@/config/api.config"
 
-async function getCollections() {
-	const collectionsRes = await fetch(`${API_URL}${getGenresUrl(`collections`)}`)
-
-	if (!collectionsRes.ok) {
-		throw new Error("Failed to fetch genres collections")
-	}
-
-	const collections: ICollection[] = await collectionsRes.json()
-
-	return {
-		collections
-	}
-}
+// async function getCollections() {
+// 	const collectionsRes = await fetch(`${API_URL}${getGenresUrl(`collections`)}`)
+//
+// 	if (!collectionsRes.ok) {
+// 		throw new Error("Failed to fetch genres collections")
+// 	}
+//
+// 	const collections: ICollection[] = await collectionsRes.json()
+//
+// 	return {
+// 		collections
+// 	}
+// }
 
 export default async function DiscoveryPage() {
-	const { collections } = await getCollections()
+	// const { collections } = await getCollections()
 
-	return <Collections data={collections || []} />
+	// return <Collections data={collections || []} />
+	return (
+		<div>
+			<h1>DiscoveryPage</h1>
+		</div>
+	)
 }

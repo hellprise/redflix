@@ -9,7 +9,7 @@ export default function AdminLayout({
 }) {
 	return (
 		<section>
-			<AdminNavigation />
+			{/*<AdminNavigation />*/}
 
 			<main>{children}</main>
 		</section>
