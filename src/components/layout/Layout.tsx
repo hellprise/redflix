@@ -1,3 +1,5 @@
+"use client"
+
 import { PropsWithChildren } from "react"
 
 import { Navigation } from "@/components/layout/navigation/Navigation"

@@ -4,8 +4,6 @@ import clsx from "clsx"
 import Image from "next/image"
 import Link from "next/link"
 
-import { getMovieUrl } from "@/config/url.config"
-
 import st from "./Gallery.module.scss"
 import { IGalleryItemProps } from "./gallery.interface"
 
@@ -21,7 +19,7 @@ export function GalleryItem({ item, variant }: IGalleryItemProps) {
 					[st.withText]: item.content
 				}
 			)}
-			href={"123" + getMovieUrl("456" + item.slug)}
+			href={item.slug}
 		>
 			{item.posterPath ? (
 				<Image

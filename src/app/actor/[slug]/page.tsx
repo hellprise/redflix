@@ -1,15 +1,20 @@
 import { MoviesCatalog } from "@/components/ui/movies-catalog/MoviesCatalog"
 
+import { getContentType } from "@/services/api/api.helper"
+
 import { API_URL, getActorsUrl, getMoviesUrl } from "@/config/api.config"
 
 import { IActor } from "@/shared/types/actor.interface"
 import { IMovie } from "@/shared/types/movie.interface"
 
-async function getGenre({ slug }: { slug: string }) {
-	const actorRes = await fetch(`${API_URL}${getActorsUrl(`by-slug/${slug}`)}`)
+async function getActor({ slug }: { slug: string }) {
+	const actorRes = await fetch(`${API_URL}${getActorsUrl(`by-slug/${slug}`)}`, {
+		method: "GET",
+		headers: getContentType()
+	})
 
 	if (!actorRes.ok) {
-		throw new Error("Failed to fetch genre")
+		throw new Error("Failed to fetch actor")
 	}
 
 	const actor: IActor = await actorRes.json()
@@ -18,9 +23,7 @@ async function getGenre({ slug }: { slug: string }) {
 		`${API_URL}${getMoviesUrl(`by-actor/${actor._id}`)}`,
 		{
 			method: "GET",
-			headers: {
-				"Content-Type": "application/json"
-			}
+			headers: getContentType()
 		}
 	)
 
@@ -48,25 +51,19 @@ export async function generateStaticParams() {
 	}))
 }
 
-export default async function GenrePage({
+export default async function ActorPage({
 	params
 }: {
 	params: { slug: string }
 }) {
-	const { actor, moviesByActor } = await getGenre({
+	const { actor, moviesByActor } = await getActor({
 		slug: params.slug
 	})
 
 	return (
 		<>
 			{actor ? (
-				<>
-					<MoviesCatalog
-						title={actor.name}
-						isLoading={false}
-						movies={moviesByActor}
-					/>
-				</>
+				<MoviesCatalog title={actor.name} movies={moviesByActor} />
 			) : null}
 		</>
 	)

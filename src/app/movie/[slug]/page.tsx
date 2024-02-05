@@ -1,12 +1,14 @@
 import { SingleMovie } from "@/components/screens/movie/SingleMovie"
 import { IGalleryItem } from "@/components/ui/gallery/gallery.interface"
 
+import { getContentType } from "@/services/api/api.helper"
+
 import { API_URL, getMoviesUrl } from "@/config/api.config"
 import { getMovieUrl } from "@/config/url.config"
 
 import { IMovie } from "@/shared/types/movie.interface"
 
-async function getMovie({ slug }: { slug: string }) {
+async function getMovies({ slug }: { slug: string }) {
 	const movieRes = await fetch(`${API_URL}${getMoviesUrl(`by-slug/${slug}`)}`)
 
 	if (!movieRes.ok) {
@@ -22,9 +24,7 @@ async function getMovie({ slug }: { slug: string }) {
 			body: JSON.stringify({
 				genreIds: movie.genres.map(genre => genre._id)
 			}),
-			headers: {
-				"Content-Type": "application/json"
-			}
+			headers: getContentType()
 		}
 	)
 
@@ -60,12 +60,12 @@ export async function generateStaticParams() {
 	}))
 }
 
-export default async function GenrePage({
+export default async function MoviePage({
 	params
 }: {
 	params: { slug: string }
 }) {
-	const { movie, similarMovies } = await getMovie({
+	const { movie, similarMovies } = await getMovies({
 		slug: params.slug
 	})
 
