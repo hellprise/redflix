@@ -11,10 +11,5 @@ export default function ActorEditPage({
 }: {
 	params: { id: string }
 }) {
-	// return <MovieEdit id={id} />
-	return (
-		<div>
-			<h1>ActorEditPage</h1>
-		</div>
-	)
+	return <MovieEdit id={id} />
 }

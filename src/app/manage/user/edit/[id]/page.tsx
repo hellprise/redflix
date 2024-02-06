@@ -11,10 +11,5 @@ export default function UserEditPage({
 }: {
 	params: { id: string }
 }) {
-	// return <UserEdit id={id} />
-	return (
-		<div>
-			<h1>UserEditPage</h1>
-		</div>
-	)
+	return <UserEdit id={id} />
 }

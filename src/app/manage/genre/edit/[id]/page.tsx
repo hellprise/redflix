@@ -11,10 +11,5 @@ export default function GenreEditPage({
 }: {
 	params: { id: string }
 }) {
-	// return <GenreEdit id={id} />
-	return (
-		<div>
-			<h1>GenreEditPage</h1>
-		</div>
-	)
+	return <GenreEdit id={id} />
 }

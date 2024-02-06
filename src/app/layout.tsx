@@ -2,7 +2,7 @@ import clsx from "clsx"
 import type { Metadata, Viewport } from "next"
 import { Outfit } from "next/font/google"
 
-// import LayoutClient from "@/components/layout/Layout"
+import LayoutClient from "@/components/layout/Layout"
 
 import "@/assets/styles/globals.scss"
 
@@ -75,9 +75,9 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={clsx(outfit.className)}>
-				{/*<LayoutClient>*/}
+				<LayoutClient>
 					{children}
-				{/*</LayoutClient>*/}
+				</LayoutClient>
 			</body>
 		</html>
 	)
