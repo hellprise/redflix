@@ -28,7 +28,7 @@ export function FavoriteMovies({}: IFavoriteMovies) {
 	return (
 		<>
 			{isClient && (
-				<div className="mt-11 pr-11">
+				<div className="mt-11">
 					{!isLoading ? (
 						<MovieList
 							title="Favorites movies list"

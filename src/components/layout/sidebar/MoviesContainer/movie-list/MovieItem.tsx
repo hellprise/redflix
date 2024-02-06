@@ -32,7 +32,7 @@ export function MovieItem({ movie }: IMovieItem) {
 			<section className="flex flex-col justify-between">
 				<div>
 					<h3 className="truncate text-lg font-medium">
-						{cutString(movie.title, 17)}
+						{cutString(movie.title, 15)}
 					</h3>
 
 					<p className="text-sm text-gray-600">

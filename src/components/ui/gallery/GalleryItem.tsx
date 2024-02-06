@@ -11,11 +11,10 @@ export function GalleryItem({ item, variant }: IGalleryItemProps) {
 	return (
 		<Link
 			className={clsx(
-				"st.item relative flex flex-[0_0_auto] animate-fade items-end overflow-hidden rounded-lg shadow-lg transition-transform hover:-translate-y-1",
+				"relative flex flex-[0_0_auto] animate-fade items-end overflow-hidden rounded-lg shadow-lg transition-transform hover:-translate-y-1",
 				{
-					"st.vertical mr-4 h-72 w-1/5 max-w-[200px] last:mr-0":
-						variant === "vertical",
-					"st.horizontal mb-8 h-44 w-[31%]": variant === "horizontal",
+					"mr-4 h-72 w-1/5 max-w-[200px] last:mr-0": variant === "vertical",
+					"mb-8 h-44 w-[30%]": variant === "horizontal",
 					[st.withText]: item.content
 				}
 			)}
