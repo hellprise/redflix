@@ -75,7 +75,9 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={clsx(outfit.className)}>
-				<LayoutClient>{children}</LayoutClient>
+				<LayoutClient>
+					{children}
+				</LayoutClient>
 			</body>
 		</html>
 	)
