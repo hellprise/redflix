@@ -15,6 +15,7 @@ export function SlideItem({ slide, buttonTitle = "Watch" }: ISlideItem) {
 					className={st.image}
 					draggable={false}
 					priority
+					quality={40}
 					src={slide.bigPoster}
 					fill
 					alt={slide.title}

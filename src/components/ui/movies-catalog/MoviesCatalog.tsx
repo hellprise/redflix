@@ -1,6 +1,8 @@
 import { Heading } from "@/components/ui"
 import { GalleryItem } from "@/components/ui/gallery/GalleryItem"
 
+import { getMovieUrl } from "@/config/url.config"
+
 import { Description } from "../description/Description"
 
 import { IMoviesCatalog } from "./movies-catalog.interface"
@@ -16,7 +18,7 @@ export function MoviesCatalog({ movies, title, description }: IMoviesCatalog) {
 				{movies.map(movie => (
 					<GalleryItem
 						item={{
-							slug: movie.slug,
+							slug: getMovieUrl(movie.slug),
 							name: movie.title,
 							posterPath: movie.bigPoster,
 							content: {

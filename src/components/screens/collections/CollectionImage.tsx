@@ -4,10 +4,12 @@ import { ICollection } from "./collections.interface"
 
 export function CollectionImage({
 	collection: { image, title },
-	className
+	className,
+	isBehind
 }: {
 	collection: ICollection
 	className?: string
+	isBehind?: boolean
 }) {
 	return image !== "image-not-found" ? (
 		<Image
@@ -16,6 +18,7 @@ export function CollectionImage({
 			alt={title}
 			fill
 			priority
+			quality={isBehind ? 1 : 40}
 			draggable={false}
 		/>
 	) : (

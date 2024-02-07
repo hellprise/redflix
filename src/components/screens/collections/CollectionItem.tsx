@@ -17,10 +17,10 @@ export function CollectionItem({ collection }: { collection: ICollection }) {
 			</div>
 
 			<div className={clsx(st.behind, st.second)}>
-				<CollectionImage collection={collection} />
+				<CollectionImage collection={collection} isBehind />
 			</div>
 			<div className={clsx(st.behind, st.third)}>
-				<CollectionImage collection={collection} />
+				<CollectionImage collection={collection} isBehind />
 			</div>
 		</Link>
 	)

@@ -27,6 +27,7 @@ export function GalleryItem({ item, variant }: IGalleryItemProps) {
 					alt={item.name}
 					fill
 					priority
+					quality={40}
 				/>
 			) : (
 				<div className="absolute inset-0 rounded-lg bg-gray-900" />
